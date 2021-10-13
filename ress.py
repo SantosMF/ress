@@ -89,7 +89,8 @@ try:
         n_coord.append(texto)
     positions ="".join(map(str,n_coord)) # cria uma string com o Simbolo, ID e cordenadas X Y Z
 #-----------------------------------------------------------------------------
-    with open("cryst.res", 'w') as saida: ## cria um arquivo .res
+    nome = str(input("Salvar como (extensão: .res)?\n>>"))
+    with open(nome, 'w') as saida: ## cria um arquivo .res
         saida.write("TITL insert-title\n")
         saida.write(f"CELL  0.71073 {r1:.6f} {r2:.6f} {r3:.6f} {alpha:.6f}  {beta:.6f} {gamma:.6f}\n")
         saida.write("LATT  -1\n")
@@ -99,9 +100,9 @@ try:
         saida.write(f"{positions}\n")
         saida.write("HKLF 4\nEND")
     print(50*'=')
-    print("Dados salvos como: cryst.res")
+    print("Dados salvos como: %s" %(nome))
 except:
-    print("""Cryst-1.0:
+    print("""ress-1.0:
 USO:
-    [cryst.py] [arquivo .out do cálculo vc-relax]
+    [ress.py] [arquivo .out do cálculo vc-relax]
     """)
